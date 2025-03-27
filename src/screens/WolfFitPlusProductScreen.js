@@ -432,8 +432,6 @@ const WolfFitPlusProductScreen = ({navigation, route}) => {
         ]}
         onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
         onNavigationStateChange={handleNavigationStateChange}
-        onLoadStart={handleLoadingStart} // Викликається при початку завантаження
-        onLoadEnd={handleLoadingEnd} // Викликається при завершенні завантаження
         source={{
           uri: product,
         }}
@@ -456,7 +454,7 @@ const WolfFitPlusProductScreen = ({navigation, route}) => {
         domStorageEnabled={true}
         javaScriptEnabled={true}
         allowsInlineMediaPlayback={true}
-        setSupportMultipleWindows={false}
+        setSupportMultipleWindows={true}
         mediaPlaybackRequiresUserAction={false}
         allowFileAccess={true}
         javaScriptCanOpenWindowsAutomatically={true}
@@ -464,9 +462,10 @@ const WolfFitPlusProductScreen = ({navigation, route}) => {
         ref={refWebview}
         //userAgent={customUserAgent}
         userAgent={`Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/605.1`}
+        onLoadStart={handleLoadingStart} // Викликається при початку завантаження
+        onLoadEnd={handleLoadingEnd} // Викликається при завершенні завантаження
         startInLoadingState={true}
         renderLoading={() => <LoadingIndicatorView />}
-        //useWebKit={true}
       />
 
       <View
